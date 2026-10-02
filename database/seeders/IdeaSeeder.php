@@ -6,7 +6,7 @@ class IdeaSeeder extends Seeder
 {
     public function run(): void
     {
-        Idea::create([
+        Idea::firstOrCreate([
             'titulo' => 'Aplicación para organizar citas
             veterinarias',
             'descripcion' => 'Sistema para registrar y organizar
@@ -16,12 +16,21 @@ class IdeaSeeder extends Seeder
             'categoria_id' => 1
         ]);
         
-        Idea::create([
+        Idea::firstOrCreate([
             'titulo' => 'Plataforma para cursos en línea',
             'descripcion' => 'Sistema para ofrecer cursos y
             materiales educativos.',
             'estado' => 'en revisión',
             'autor' => 'Pedro',
+            'categoria_id' => 2
+        ]);
+
+        Idea::firstOrCreate([
+            'titulo' => 'Plataforma para cursos presenciales',
+            'descripcion' => 'Sistema para ofrecer cursos y
+            materiales educativos presenciales.',
+            'estado' => 'registrada',
+            'autor' => 'Susy',
             'categoria_id' => 2
         ]);
     }
