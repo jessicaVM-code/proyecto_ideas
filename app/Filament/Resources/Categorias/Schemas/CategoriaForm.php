@@ -13,9 +13,14 @@ class CategoriaForm
         return $schema
             ->components([
                 TextInput::make('nombre')
-                    ->required(),
+                    ->label('Nombre de categoria')
+                    ->helperText('Ingresa el nombre de la de categoria')
+                    ->placeholder('Ej Categoria')
+                    ->required(),  //campo requerido
                 Textarea::make('descripcion')
+                    ->label('Descripción')
                     ->required()
+                    ->helperText('Ingresa una descripción completa')
                     ->columnSpanFull(),
             ]);
     }

@@ -24,7 +24,7 @@ class IdeaForm
                 TextInput::make('autor')
                     ->required(),
                 Select::make('categoria_id')
-                    ->relationship('categoria', 'id')
+                    ->relationship('categoria', 'nombre')
                     ->required(),
             ]);
     }
