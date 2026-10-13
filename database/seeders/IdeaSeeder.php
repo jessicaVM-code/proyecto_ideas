@@ -27,8 +27,7 @@ class IdeaSeeder extends Seeder
 
         Idea::firstOrCreate([
             'titulo' => 'Plataforma para cursos presenciales',
-            'descripcion' => 'Sistema para ofrecer cursos y
-            materiales educativos presenciales.',
+            'descripcion' => 'Sistema para ofrecer cursos y materiales educativos presenciales.',
             'estado' => 'registrada',
             'autor' => 'Susy',
             'categoria_id' => 2
