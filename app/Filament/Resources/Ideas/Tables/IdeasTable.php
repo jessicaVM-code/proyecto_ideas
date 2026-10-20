@@ -9,12 +9,24 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\RestoreAction;
+use Filament\Actions\ForceDeleteAction;
+use Filament\Tables\Filters\TrashedFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class IdeasTable
 {
     public static function configure(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(
+                    fn (Builder $query) => $query->withoutGlobalScopes([
+                        SoftDeletingScope::class,
+                    ])
+                )
             ->columns([
                 TextColumn::make('id')
                     ->label('#')
@@ -49,11 +61,15 @@ class IdeasTable
                         'en revision' => 'En revision',
                         'aprobada' => 'Aprobada',
                         'rechazada' => 'Rechazada',
-                    ])
+                    ]),
+                TrashedFilter::make(),
             ])
             ->recordActions([
                 EditAction::make(),
                 ViewAction::make(),
+                DeleteAction::make(),
+                RestoreAction::make(),
+                ForceDeleteaction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

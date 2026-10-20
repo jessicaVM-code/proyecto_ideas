@@ -24,7 +24,7 @@ class EditCategoria extends EditRecord
     {
         return [
             DeleteAction::make()
-                ->hidden(fn ($record) => $record->ideas()->exists()),
+                ->hidden(fn ($record) => $record->ideas()->withTrashed()->exists()),
         ];
     }
 }
