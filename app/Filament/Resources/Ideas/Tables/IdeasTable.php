@@ -66,7 +66,7 @@ class IdeasTable
             ])
             ->recordActions([
                 EditAction::make(),
-                ViewAction::make(),
+                ViewAction::make()->modalHeading(''),
                 DeleteAction::make(),
                 RestoreAction::make(),
                 ForceDeleteaction::make(),
