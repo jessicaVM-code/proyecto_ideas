@@ -18,7 +18,7 @@ class IdeasCardsStatsOverview extends StatsOverviewWidget
 
         return [
             Stat::make('Total de ideas', Idea::count())->icon('heroicon-s-light-bulb')
-             ->description("Registradas: $registradas | " . "En revision: $revision | ". ),
+             ->description( "Registradas: $registradas | " . "En revisión: $revision | " . "Aprobadas: $aprobadas | " . "Rechazadas: $rechazadas"),
 
             Stat::make('Total de categorias', Categoria::count())->icon('heroicon-s-tag'),
         ];
