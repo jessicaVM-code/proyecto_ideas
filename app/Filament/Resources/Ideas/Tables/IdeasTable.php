@@ -79,7 +79,7 @@ class IdeasTable
                 DeleteAction::make(),
                 RestoreAction::make(),
                 ForceDeleteaction::make(),
-                Action::make('aprobar')->label('Aprobar')->icon(Heroicon::HandThumbUp)
+                Action::make('aprobar')->authorize('cambiarEstado')->label('Aprobar')->icon(Heroicon::HandThumbUp)
                     ->color('success')->requiresConfirmation()
                     ->modalheading('Aprobación')->modalDescription('¿Deseas aprobar esa idea?')
                     ->action(function (Idea $record){
@@ -94,7 +94,7 @@ class IdeasTable
                             ->send();
                     })
                     ->visible(fn (Idea $record) => $record->estado !== 'aprobada'),
-                Action::make('rechazar')->label('Rechazar')
+                Action::make('rechazar')->authorize('cambiarEstado')->label('Rechazar')
                     ->icon(Heroicon::HandThumbDown)
                     ->color('danger')->requiresConfirmation()
                     ->modalheading('Rechazar')->modalDescription('¿Deseas rechazar esa idea?')
