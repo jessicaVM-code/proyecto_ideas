@@ -8,6 +8,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 use App\Helpers\EstadoIdea;
 use Filament\Schemas\Components\Utilities\Get;
+use Filament\Facades\Filament;
 
 class IdeaForm
 {
@@ -39,7 +40,7 @@ class IdeaForm
                     ->options(EstadoIdea::opciones())
                     ->default('registrada')
                     ->hiddenOn('create')
-                    ->disabled(fn () => auth()->user()->rol !== 'admin' || auth()->user()->rol !== 'coordinador' )
+                    ->disabled(fn () => Filament::auth()->user()?->rol !== 'admin' && Filament::auth()->user()?->rol !== 'coordinador' )
                     ->live(),
                 Textarea::make('observacion')
                     ->label('Motivo de rechazo')
